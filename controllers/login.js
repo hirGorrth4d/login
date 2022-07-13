@@ -25,4 +25,9 @@ const logout = (req,res) => {
         }
     })
 }
-module.exports = {login, loginFile, loginPost, logout}
+
+const logUser = (req,res,next) => {
+    if(req.session?.username ) res.send(req.session.username)
+    else res.send('invitado')
+}
+module.exports = {login, loginFile, loginPost, logout, logUser}
