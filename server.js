@@ -5,7 +5,7 @@ const MongoStore = require('connect-mongo');
 const advancedOptions = {useNewUrlParser: true, useUnifiedTopology: true}
 const port = process.env.PORT || 8080
 const login = require('./controllers/login');
-const sessionRouter = require('./routes/session');
+const session = require('./routes/session');
 
 
 const app = express()
@@ -24,7 +24,7 @@ app.use(session({
     saveUninitialized: true
 }))
 app.use(express.static('public'))
-app.use('/', sessionRouter)
+app.use('/', session)
 
 app.get('/', login)
 
