@@ -24,10 +24,10 @@ app.use(session({
     saveUninitialized: true
 }))
 app.use(express.static('public'))
+app.use('/', sessionRouter)
 
 app.get('/', login)
 
-app.use('/', sessionRouter)
 
 app.listen(port, () => {
     console.log('server running on port ' + port)
