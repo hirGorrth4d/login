@@ -1,5 +1,7 @@
+const path = require('path');
+
 const login = (req,res, next) => {
-    if(req.session?.username) {
+    if(req.session?.user) {
         next()
     } else {
         return res.redirect('/login')
@@ -8,7 +10,7 @@ const login = (req,res, next) => {
 
 
 const loginFile = (req,res) => {
-    res.sendFile(path.join(__dirname, 'public','login.html'))
+    res.sendFile(path.join(__dirname, '../public','login.html'))
 }
 
 const loginPost = (req,res) => {
@@ -27,7 +29,7 @@ const logout = (req,res) => {
 }
 
 const logUser = (req,res,next) => {
-    if(req.session?.username ) res.send(req.session.username)
+    if(req.session?.user ) res.send(req.session.user)
     else res.send('invitado')
 }
 

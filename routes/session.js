@@ -2,16 +2,18 @@ const express = require("express")
 
 const {Router} = express
 
-const session = Router()
+const sessionRouter = Router()
 
-const {loginFile, loginPost, logout, logUser} = require('../controllers/login');
+const loginController = require('../controllers/login');
 
-session.get('/login', loginFile)
+sessionRouter.get('/', loginController.login)
 
-session.post('/login', loginPost)
+sessionRouter.get('/login', loginController.loginFile)
 
-session.get('/logout', logout)
+sessionRouter.post('/login', loginController.loginPost)
 
-session.get('/usuario', logUser)
+sessionRouter.get('/logout', loginController.logout)
 
-module.exports = session
+sessionRouter.get('/usuario', loginController.logUser)
+
+module.exports = sessionRouter
