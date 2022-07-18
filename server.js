@@ -19,9 +19,9 @@ app.use(session({
         mongoOptions: advancedOptions
     }),
     secret: 'admin',
-    resave: true,
-    cookie: {maxAge:60000},
-    saveUninitialized: true
+    resave: false,
+    cookie: {maxAge:600},
+    saveUninitialized: false
 }))
 
 app.get('/', loginController.login)
